@@ -5,14 +5,18 @@
   <%= @budget.amount %>
 </p>
 
-<p>
-  <strong>Balance:</strong>
-  <%= @budget.balance %>
-</p>
+  
 <p>
   <strong>Duration:</strong>
   <%= @budget.duration %>
 </p>
 
+<p>
+	<strong>Expenditures:</strong>
+	<% @expenditures.each do |e| %>
+		<%= e.amount %>
+	<% end %>
+</p>
 <%= link_to 'Edit', edit_budget_path(@budget) %> |
-<%= link_to 'Back', budgets_path %>
+<%= link_to 'Back', budgets_path %> |
+<%= link_to 'New expenditure', new_expenditure_path %>

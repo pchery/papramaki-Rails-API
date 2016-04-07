@@ -1,4 +1,4 @@
 class Category < ActiveRecord::Base
-	belongs_to :expenditure
 	belongs_to :user
+	has_many :expenditures
 end

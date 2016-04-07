@@ -11,6 +11,7 @@ class BudgetsController < ApplicationController
   # GET /budgets/1
   # GET /budgets/1.json
   def show
+    @expenditures = Expenditure.where(budget_id: @budget.id)
   end
 
   # GET /budgets/new
@@ -72,6 +73,6 @@ class BudgetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def budget_params
-      params.require(:budget).permit(:amount, :balance, :duration)
+      params.require(:budget).permit(:amount, :duration)
     end
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :balances
   resources :categories
   resources :expenditures
   devise_for :users

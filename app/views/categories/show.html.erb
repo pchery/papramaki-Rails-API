@@ -9,6 +9,12 @@
   <strong>Color:</strong>
   <%= @category.color %>
 </p>
-
+ 
+<p> 
+	<strong>Expenditures:</strong>
+	<%= @expenditures.each do |e| %>
+		<%= e.amount %>
+	<% end %>
+</p>
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

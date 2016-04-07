@@ -11,11 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404234040) do
+ActiveRecord::Schema.define(version: 20160406211126) do
+
+  create_table "balances", force: :cascade do |t|
+    t.float    "amount"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "budgets", force: :cascade do |t|
     t.float    "amount"
-    t.float    "balance"
     t.integer  "duration"
     t.integer  "user_id"
     t.datetime "created_at", null: false
@@ -26,18 +32,17 @@ ActiveRecord::Schema.define(version: 20160404234040) do
     t.string   "name"
     t.string   "color"
     t.integer  "user_id"
-    t.integer  "expenditure_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "expenditures", force: :cascade do |t|
     t.float    "amount"
     t.integer  "user_id"
     t.integer  "budget_id"
-    t.integer  "categories_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

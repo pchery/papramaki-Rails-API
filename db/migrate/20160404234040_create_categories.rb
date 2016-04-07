@@ -4,7 +4,6 @@ class CreateCategories < ActiveRecord::Migration
       t.string :name
       t.string :color
       t.references :user
-      t.references :expenditure
       t.timestamps null: false
     end
   end

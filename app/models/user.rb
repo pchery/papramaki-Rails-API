@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
   has_many :budgets
   has_many :expenditures
   has_many :categories
+  has_one :balance
 end

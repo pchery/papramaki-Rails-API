@@ -25,9 +25,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise'
 # Token based authentication for Rails JSON APIs
-gem 'devise_token_auth'
+#gem 'devise_token_auth'
 # required for devise_token_auth
-gem 'omniauth'
+#gem 'omniauth'
 
 gem 'simple_form'
 

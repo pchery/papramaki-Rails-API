@@ -4,7 +4,7 @@ class CreateExpenditures < ActiveRecord::Migration
       t.float :amount
       t.references :user
       t.references :budget
-      t.references :categories
+      t.references :category
       t.timestamps null: false
     end
   end

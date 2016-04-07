@@ -6,9 +6,13 @@
 </p>
 
 <p>
-  <strong>Category:</strong>
-  <%= @expenditure.category %>
+  <strong>Category ID:</strong>
+  <%= @expenditure.category_id %>
 </p>
+<p>
+  <strong>Budget ID:</strong>
+  <%= @expenditure.budget_id %>
 
+</p>
 <%= link_to 'Edit', edit_expenditure_path(@expenditure) %> |
 <%= link_to 'Back', expenditures_path %>

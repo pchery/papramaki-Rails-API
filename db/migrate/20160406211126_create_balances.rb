@@ -1,8 +1,7 @@
-class CreateBudgets < ActiveRecord::Migration
+class CreateBalances < ActiveRecord::Migration
   def change
-    create_table :budgets do |t|
+    create_table :balances do |t|
       t.float :amount
-      t.integer :duration
       t.references :user
       t.timestamps null: false
     end
