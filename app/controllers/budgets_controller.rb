@@ -11,7 +11,7 @@ class BudgetsController < ApplicationController
   # GET /budgets/1
   # GET /budgets/1.json
   def show
-    @expenditures = Expenditure.where(budget_id: @budget.id)
+    @expenditures = Expenditure.all# where(budget_id: @budget.id)
   end
 
   # GET /budgets/new

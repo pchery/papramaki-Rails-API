@@ -4,7 +4,7 @@ class BalancesController < ApplicationController
   # GET /balances
   # GET /balances.json
   def index
-    @balances = Balance.where(user_id: current_user.id)
+    @balances = Balance.all #.where(user_id: current_user.id)
   end
 
   # GET /balances/1
