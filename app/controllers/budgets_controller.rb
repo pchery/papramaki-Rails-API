@@ -1,6 +1,6 @@
 class BudgetsController < ApplicationController
   before_action :set_budget, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
 
   # GET /budgets
   # GET /budgets.json
@@ -27,8 +27,8 @@ class BudgetsController < ApplicationController
   # POST /budgets.json
   def create
     @budget = Budget.new(budget_params)
-    @budget.user_id = current_user.id
-    @budget.save
+    # @budget.user_id = current_user.id
+    # @budget.save
 
     respond_to do |format|
       if @budget.save
@@ -73,6 +73,6 @@ class BudgetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def budget_params
-      params.require(:budget).permit(:amount, :duration)
+      params.permit(:amount, :duration)
     end
 end

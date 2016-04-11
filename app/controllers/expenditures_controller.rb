@@ -1,6 +1,6 @@
 class ExpendituresController < ApplicationController
   before_action :set_expenditure, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
   # GET /expenditures
   # GET /expenditures.json
   def index
@@ -25,8 +25,8 @@ class ExpendituresController < ApplicationController
   # POST /expenditures.json
   def create
     @expenditure = Expenditure.new(expenditure_params)
-    @expenditure.user_id = current_user.id
-    @expenditure.save
+    # @expenditure.user_id = current_user.id
+    # @expenditure.save
 
     respond_to do |format|
       if @expenditure.save
@@ -71,6 +71,6 @@ class ExpendituresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def expenditure_params
-      params.require(:expenditure).permit(:amount, :budget_id, :category_id)
+      params.permit(:amount, :budget_id, :category_id)
     end
 end

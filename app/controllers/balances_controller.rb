@@ -1,6 +1,6 @@
 class BalancesController < ApplicationController
   before_action :set_balance, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
   # GET /balances
   # GET /balances.json
   def index
@@ -26,8 +26,8 @@ class BalancesController < ApplicationController
   # POST /balances.json
   def create
       @balance = Balance.new(balance_params)
-      @balance.user_id = current_user.id
-      @balance.save
+      #@balance.user_id = current_user.id
+      #@balance.save
 
       respond_to do |format|
         if @balance.save
@@ -72,6 +72,6 @@ class BalancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def balance_params
-      params.require(:balance).permit(:amount)
+      params.permit(:amount)
     end
 end
