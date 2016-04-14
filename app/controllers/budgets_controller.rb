@@ -5,13 +5,13 @@ class BudgetsController < ApplicationController
   # GET /budgets
   # GET /budgets.json
   def index
-    @budgets = Budget.where(user_id: current_user.id)
+    @budgets = Budget.all#(user_id: current_user.id)
   end
 
   # GET /budgets/1
   # GET /budgets/1.json
   def show
-    @expenditures = Expenditure.all# where(budget_id: @budget.id)
+    @expenditures = Expenditure.where(budget_id: @budget.id)
   end
 
   # GET /budgets/new
