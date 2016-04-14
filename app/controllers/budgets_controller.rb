@@ -7,6 +7,9 @@ class BudgetsController < ApplicationController
   def index
     if params[:user_id]
       @budgets = Budget.where(user_id: user_id)
+      respond_to do |format|
+          format.json { render template: 'index.json.jbuilder'}
+      end
     else
       @bugets = Budget.all
     end
