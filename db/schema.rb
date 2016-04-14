@@ -14,35 +14,35 @@
 ActiveRecord::Schema.define(version: 20160406211126) do
 
   create_table "balances", force: :cascade do |t|
-    t.float    "amount"
+    t.float    "amount",     default: 0.0
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "budgets", force: :cascade do |t|
-    t.float    "amount"
-    t.integer  "duration"
+    t.float    "amount",     default: 0.0
+    t.integer  "duration",   default: 0
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
-    t.string   "color"
+    t.string   "name",       default: ""
+    t.string   "color",      default: ""
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "expenditures", force: :cascade do |t|
-    t.float    "amount"
+    t.float    "amount",      default: 0.0
     t.integer  "user_id"
     t.integer  "budget_id"
     t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|
