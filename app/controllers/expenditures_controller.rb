@@ -1,10 +1,14 @@
 class ExpendituresController < ApplicationController
   before_action :set_expenditure, only: [:show, :edit, :update, :destroy]
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
   # GET /expenditures
   # GET /expenditures.json
   def index
-    @expenditures = Expenditure.all#where(user_id: current_user.id)
+    if params[:user_id]
+      @expenditures = Expenditure.where(user_id: user_id)
+    else
+      @expenditures = Expenditure.all
+    end
   end
 
   # GET /expenditures/1

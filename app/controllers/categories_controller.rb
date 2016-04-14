@@ -1,10 +1,14 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all#where(user_id: current_user.id)
+    if params[:user_id]
+      @categories = Category.where(user_id: user_id)
+    else
+      @categories = Category.all
+    end
   end
 
   # GET /categories/1

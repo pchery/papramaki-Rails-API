@@ -1,11 +1,15 @@
 class BudgetsController < ApplicationController
   before_action :set_budget, only: [:show, :edit, :update, :destroy]
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
 
   # GET /budgets
   # GET /budgets.json
   def index
-    @budgets = Budget.all#(user_id: current_user.id)
+    if params[:user_id]
+      @budgets = Budget.where(user_id: user_id)
+    else
+      @bugets = Budget.all
+    end
   end
 
   # GET /budgets/1

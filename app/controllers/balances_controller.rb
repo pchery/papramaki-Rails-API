@@ -1,10 +1,14 @@
 class BalancesController < ApplicationController
   before_action :set_balance, only: [:show, :edit, :update, :destroy]
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
   # GET /balances
   # GET /balances.json
   def index
-    @balances = Balance.all #.where(user_id: current_user.id)
+    if params[:user_id]
+      @balances = Balance.where(user_id: user_id)
+    else
+      @balances = Balance.all
+    end
   end
 
   # GET /balances/1
