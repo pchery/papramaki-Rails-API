@@ -37,6 +37,9 @@ gem 'annotate'
 
 gem 'rack-cors'
 
+gem 'devise_token_auth' # Token based authentication for Rails JSON APIs
+gem 'omniauth' # required for devise_token_auth
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

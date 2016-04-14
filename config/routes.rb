@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  mount_devise_token_auth_for 'User', at: 'auth'
   resources :balances
   resources :categories
   resources :expenditures
-  devise_for :users
   resources :budgets
   root 'balances#index'
   # The priority is based upon order of creation: first created -> highest priority.
