@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       mount_devise_token_auth_for 'User', at: 'auth'
       resources :budgets, only: [:index, :show, :create, :update, :destroy]
       resources :balances, only: [:index, :show, :create, :update, :destroy]
+      resources :categories, only: [:index, :show, :create, :update, :destroy]
+      resources :expenditures, only: [:index, :show, :create, :update, :destroy]
     end
   end
 end
