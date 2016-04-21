@@ -6,16 +6,13 @@ class Api::V1::BudgetsController < ApplicationController
   # GET /budgets
   def index
     @budgets = Budget.where(user_id: current_user.id).sort_by(&:created_at).reverse!
-    # respond_to do |format|
-    #   format.json { render }
-    # end
     respond_with @budgets
   end
 
   # GET /budgets/1
   def show
-    respond_with @budget
     # @expenditures = Expenditure.where(budget_id: @budget.id)
+    respond_with @budget
   end
 
   # POST /budgets
@@ -23,9 +20,11 @@ class Api::V1::BudgetsController < ApplicationController
     @budget = Budget.new(budget_params)
     # If nested route:
     # @budget = current_user.budgets.build(budget_params)
+    @budget.user_id = current_user.id
+    @budget.save
 
     if @budget.save
-      render :show, status: 201, location: [:api, @budget]
+      render json: @budget, status: 201, location: [:api, @budget]
     else
       render json: @budget.errors, status: 442
     end
@@ -34,7 +33,7 @@ class Api::V1::BudgetsController < ApplicationController
   # PATCH/PUT /budgets/1
   def update
     if @budget.update(budget_params)
-      render :show, status: 200, location: [:api, @budget]
+      render json: @budget, status: 200, location: [:api, @budget]
     else
       render json: @budget.errors, status: 442
     end
