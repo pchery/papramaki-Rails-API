@@ -24,14 +24,14 @@ module Papramaki
     config.api_only = true
     config.middleware.use ActionDispatch::Flash
     config.middleware.insert_before 0, "Rack::Cors" do
-        allow do
-            origins '*'
-            resource '*', :headers => :any, :methods => [:get, :post, :options]
-        end
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
     end
 
+    config.autoload_paths += %W(\#{config.root}/lib)
 
-    
     config.active_record.raise_in_transactional_callbacks = true
   end
 end

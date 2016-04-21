@@ -1,7 +1,7 @@
 class CreateExpenditures < ActiveRecord::Migration
   def change
     create_table :expenditures do |t|
-      t.float :amount, default: 0.0
+      t.decimal :amount, default: 0.0, null: false
       t.references :user
       t.references :budget
       t.references :category
