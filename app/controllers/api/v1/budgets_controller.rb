@@ -6,6 +6,9 @@ class Api::V1::BudgetsController < ApplicationController
   # GET /budgets
   def index
     @budgets = Budget.where(user_id: current_user.id).sort_by(&:created_at).reverse!
+    respond_to do |format|
+      format.json { render }
+    end
   end
 
   # GET /budgets/1
