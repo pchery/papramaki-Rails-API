@@ -6,6 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+config.assets.initialize_on_precompile = false
 module Papramaki
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -31,7 +32,6 @@ module Papramaki
     end
 
     config.autoload_paths += %W(\#{config.root}/lib)
-    config.assets.initialize_on_precompile = false
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
