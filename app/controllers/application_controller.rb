@@ -1,6 +1,14 @@
 class ApplicationController < ActionController::Base
-  include DeviseTokenAuth::Concerns::SetUserByToken
-  include ActionController::MimeResponds
+  protect_from_forgery with: :null_session
 
-  # protect_from_forgery with: :null_session
+  # Dependencies:
+  include DeviseTokenAuth::Concerns::SetUserByToken
+  include CanCan::ControllerAdditions
+
+  # Rescue from CanCanCan exception
+  rescue_from CanCan::AccessDenied do |exception|
+    # render json: exception.message, status: 500
+    @error_message = exception.message
+    render 'api/v1/errors/error', status: 500
+  end
 end

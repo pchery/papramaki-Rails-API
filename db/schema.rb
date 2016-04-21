@@ -14,14 +14,14 @@
 ActiveRecord::Schema.define(version: 20160414010216) do
 
   create_table "balances", force: :cascade do |t|
-    t.float    "amount",     default: 0.0
+    t.decimal  "amount",     default: 0.0, null: false
     t.integer  "user_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
 
   create_table "budgets", force: :cascade do |t|
-    t.float    "amount",     default: 0.0
+    t.decimal  "amount",     default: 0.0, null: false
     t.integer  "duration",   default: 0
     t.integer  "user_id"
     t.datetime "created_at",               null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20160414010216) do
   end
 
   create_table "expenditures", force: :cascade do |t|
-    t.float    "amount",      default: 0.0
+    t.decimal  "amount",      default: 0.0, null: false
     t.integer  "user_id"
     t.integer  "budget_id"
     t.integer  "category_id"

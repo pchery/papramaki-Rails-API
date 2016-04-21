@@ -1,18 +1,16 @@
 class Api::V1::BudgetsController < ApplicationController
-  before_action :set_budget, only: [:show, :edit, :update, :destroy]
+  before_action :set_budget, only: [:show, :update, :destroy]
   before_action :authenticate_user!
+  load_and_authorize_resource # CanCanCan helper
   respond_to :json
 
   # GET /budgets
   def index
     @budgets = Budget.where(user_id: current_user.id).sort_by(&:created_at).reverse!
-    respond_with @budgets
   end
 
   # GET /budgets/1
   def show
-    # @expenditures = Expenditure.where(budget_id: @budget.id)
-    respond_with @budget
   end
 
   # POST /budgets
@@ -24,7 +22,7 @@ class Api::V1::BudgetsController < ApplicationController
     @budget.save
 
     if @budget.save
-      render json: @budget, status: 201, location: [:api, @budget]
+      render :show, status: 201, location: [:api, @budget]
     else
       render json: @budget.errors, status: 442
     end
@@ -33,7 +31,7 @@ class Api::V1::BudgetsController < ApplicationController
   # PATCH/PUT /budgets/1
   def update
     if @budget.update(budget_params)
-      render json: @budget, status: 200, location: [:api, @budget]
+      render :show, status: 200, location: [:api, @budget]
     else
       render json: @budget.errors, status: 442
     end
