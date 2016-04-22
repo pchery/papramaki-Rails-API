@@ -1,6 +1,6 @@
 class Api::V1::BudgetsController < ApplicationController
   before_action :set_budget, only: [:show, :update, :destroy]
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
   load_and_authorize_resource # CanCanCan helper
   respond_to :json
 
