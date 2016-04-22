@@ -4,16 +4,16 @@ class Api::V1::CategorysController < ApplicationController
   load_and_authorize_resource # CanCanCan helper
   respond_to :json
 
-  # GET /categorys
+  # GET /categories
   def index
-    @categorys = Category.where(user_id: current_user.id).sort_by(&:created_at).reverse!
+    @categories = Category.where(user_id: current_user.id).sort_by(&:created_at).reverse!
   end
 
-  # GET /categorys/1
+  # GET /categories/1
   def show
   end
 
-  # POST /categorys
+  # POST /categories
   def create
     @category = Category.new(category_params)
     # If nested route:
