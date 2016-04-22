@@ -13,7 +13,7 @@ class Api::V1::BudgetsController < ApplicationController
   def show
   end
 
-  # POST /budgets
+  # POST /budxgets
   def create
     @budget = Budget.new(budget_params)
     # If nested route:

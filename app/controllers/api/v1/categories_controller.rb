@@ -1,23 +1,23 @@
-class Api::V1::CategorysController < ApplicationController
+class Api::V1::CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :update, :destroy]
   before_action :authenticate_api_user!
   load_and_authorize_resource # CanCanCan helper
   respond_to :json
 
-  # GET /categorys
+  # GET /categories
   def index
-    @categorys = Category.where(user_id: current_user.id).sort_by(&:created_at).reverse!
+    @categories = Category.where(user_id: current_user.id).sort_by(&:created_at).reverse!
   end
 
-  # GET /categorys/1
+  # GET /categories/1
   def show
   end
 
-  # POST /categorys
+  # POST /categories
   def create
     @category = Category.new(category_params)
     # If nested route:
-    # @category = current_user.categorys.build(category_params)
+    # @category = current_user.categories.build(category_params)
     @category.user_id = current_user.id
     @category.save
 
@@ -28,7 +28,7 @@ class Api::V1::CategorysController < ApplicationController
     end
   end
 
-  # PATCH/PUT /categorys/1
+  # PATCH/PUT /categories/1
   def update
     if @category.update(category_params)
       render :show, status: 200, location: [:api, @category]
@@ -37,7 +37,7 @@ class Api::V1::CategorysController < ApplicationController
     end
   end
 
-  # DELETE /categorys/1
+  # DELETE /categories/1
   def destroy
     @category.destroy
     head 204
