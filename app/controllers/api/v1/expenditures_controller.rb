@@ -1,6 +1,6 @@
 class Api::V1::ExpendituresController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_expenditure, only: [:show, :update, :destroy]
-  before_action :authenticate_api_user!
   load_and_authorize_resource # CanCanCan helper
   respond_to :json
 
