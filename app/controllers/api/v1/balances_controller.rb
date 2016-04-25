@@ -6,7 +6,7 @@ class Api::V1::BalancesController < ApplicationController
 
   # GET /balances
   def index
-    @balance = Balance.find(id: current_user.id)
+    @balance = Balance.find_by(user_id: current_user.id)
     render :show, status: 200, location: [:api, @balance]
   end
 
