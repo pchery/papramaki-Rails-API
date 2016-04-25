@@ -1,5 +1,5 @@
 class Api::V1::BalancesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_api_user!
   before_action :set_balance, only: [:show, :update, :destroy]
   load_and_authorize_resource # CanCanCan helper
   respond_to :json
