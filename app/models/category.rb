@@ -9,8 +9,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
 class Category < ActiveRecord::Base
-	belongs_to :user
-	has_many :expenditures
+  belongs_to :user
+  has_many :expenditures, dependent: :destroy
 end

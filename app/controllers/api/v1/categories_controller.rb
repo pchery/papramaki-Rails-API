@@ -3,10 +3,11 @@ class Api::V1::CategoriesController < ApplicationController
   before_action :authenticate_api_user!
   load_and_authorize_resource # CanCanCan helper
   respond_to :json
+  include CategoriesHelper
 
   # GET /categories
   def index
-    @categories = Category.where(user_id: current_user.id).sort_by(&:created_at).reverse!
+    @categories = Category.where(user_id: current_user.id).sort_by(&:created_at)
   end
 
   # GET /categories/1
@@ -19,6 +20,7 @@ class Api::V1::CategoriesController < ApplicationController
     # If nested route:
     # @category = current_user.categories.build(category_params)
     @category.user_id = current_user.id
+    @category.color = set_color
     @category.save
 
     if @category.save

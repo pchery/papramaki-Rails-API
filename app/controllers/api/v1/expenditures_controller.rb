@@ -6,7 +6,8 @@ class Api::V1::ExpendituresController < ApplicationController
 
   # GET /expenditures
   def index
-    @expenditures = Expenditure.where(user_id: current_user.id).sort_by(&:created_at).reverse!
+    # @expenditures = Expenditure.where(user_id: current_user.id).sort_by(&:created_at).reverse!
+    @expenditures = current_budget.expenditures.sort_by(&:created_at).reverse!
   end
 
   # GET /expenditures/1

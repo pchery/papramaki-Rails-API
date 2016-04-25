@@ -3,10 +3,16 @@ class Api::V1::BudgetsController < ApplicationController
   before_action :authenticate_api_user!
   load_and_authorize_resource # CanCanCan helper
   respond_to :json
+  include BudgetsHelper
 
   # GET /budgets
   def index
+    udpate_budget_expiration
     @budgets = Budget.where(user_id: current_user.id).sort_by(&:created_at).reverse!
+    if params[:current_budget] == "true"
+      @budget = @budgets.first
+      render :show, status: 200, location: [:api, @budget]
+    end
   end
 
   # GET /budgets/1
@@ -19,6 +25,8 @@ class Api::V1::BudgetsController < ApplicationController
     # If nested route:
     # @budget = current_user.budgets.build(budget_params)
     @budget.user_id = current_user.id
+    x = @budget.duration
+    @budget.expiration_date = Date.today + x.days
     @budget.save
 
     if @budget.save

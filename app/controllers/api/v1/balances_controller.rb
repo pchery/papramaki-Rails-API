@@ -6,7 +6,7 @@ class Api::V1::BalancesController < ApplicationController
 
   # GET /balances
   def index
-    @balances = Balance.where(user_id: current_user.id).sort_by(&:created_at).reverse!
+    @balances = Balance.find(id: current_user.id)
   end
 
   # GET /balances/1
