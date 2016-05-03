@@ -8,6 +8,7 @@ class Api::V1::BudgetsController < ApplicationController
   # GET /budgets
   def index
     udpate_budget_expiration
+    update_exp_sum
     @budgets = Budget.where(user_id: current_user.id).sort_by(&:created_at).reverse!
     if params[:current_budget] == "true"
       @budget = @budgets.first
@@ -26,7 +27,7 @@ class Api::V1::BudgetsController < ApplicationController
     # @budget = current_user.budgets.build(budget_params)
     @budget.user_id = current_user.id
     x = @budget.duration
-    @budget.expiration_date = Date.today + x.days
+    @budget.expiration_date = Date.today + x.weeks
     @budget.save
 
     if @budget.save

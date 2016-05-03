@@ -3,6 +3,7 @@ class Api::V1::ExpendituresController < ApplicationController
   before_action :set_expenditure, only: [:show, :update, :destroy]
   load_and_authorize_resource # CanCanCan helper
   respond_to :json
+  include BudgetsHelper
 
   # GET /expenditures
   def index
@@ -16,6 +17,7 @@ class Api::V1::ExpendituresController < ApplicationController
 
   # POST /expenditures
   def create
+    update_exp_sum
     @expenditure = Expenditure.new(expenditure_params)
     # If nested route:
     # @expenditure = current_user.expenditures.build(expenditure_params)
@@ -31,6 +33,7 @@ class Api::V1::ExpendituresController < ApplicationController
 
   # PATCH/PUT /expenditures/1
   def update
+    update_exp_sum
     if @expenditure.update(expenditure_params)
       render :show, status: 200, location: [:api, @expenditure]
     else
