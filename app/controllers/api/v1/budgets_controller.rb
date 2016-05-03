@@ -60,7 +60,9 @@ class Api::V1::BudgetsController < ApplicationController
   def budget_params
     params.permit(
       :amount,
-      :duration
+      :duration,
+      :expiration_date,
+      :expired
     )
   end
 end
