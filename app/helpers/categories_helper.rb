@@ -1,5 +1,6 @@
 module CategoriesHelper
   def set_color
+<<<<<<< HEAD
 
     # color_list = [
     #   'red', 'blue', 'green', 'black', 'white', 'gray', 'cyan', 'magenta',
@@ -25,4 +26,5 @@ module CategoriesHelper
     number_of_categories = Category.where(user_id: current_user.id).count
     color_list[number_of_categories % color_list.count]
   end
+
 end 
