@@ -1,13 +1,6 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
-  get 'home/index'
-
-  mount_devise_token_auth_for 'User', at: 'auth'
-  resources :balances
-  resources :categories
-  resources :expenditures
-  resources :budgets
   root 'home#index'
 
   # API definition
