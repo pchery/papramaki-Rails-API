@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425055010) do
+ActiveRecord::Schema.define(version: 20160503231421) do
 
   create_table "balances", force: :cascade do |t|
     t.decimal  "amount",     default: 0.0, null: false
@@ -21,13 +21,14 @@ ActiveRecord::Schema.define(version: 20160425055010) do
   end
 
   create_table "budgets", force: :cascade do |t|
-    t.decimal  "amount",          default: 0.0,   null: false
-    t.integer  "duration",        default: 0
+    t.decimal  "amount",                 default: 0.0,   null: false
+    t.integer  "duration",               default: 0
     t.integer  "user_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.boolean  "expired",         default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "expired",                default: false
     t.date     "expiration_date"
+    t.decimal  "expenditure_sum_amount", default: 0.0,   null: false
   end
 
   create_table "categories", force: :cascade do |t|
